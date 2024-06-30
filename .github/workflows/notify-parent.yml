@@ -32,8 +32,9 @@ jobs:
       with:
         github-token: ${{ steps.app-token.outputs.token }}
         script: |
-          await github.repos.createDispatchEvent({
+          await github.rest.actions.createWorkflowDispatch({
             owner: 'openspaceaarhus',
             repo: 'osaawebsite',
-            event_type: 'updateSubmodules'
-          })           
+            workflow_id: 'submodules.yml',
+            ref: 'master'
+          })            
