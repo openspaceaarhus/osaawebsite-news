@@ -25,11 +25,10 @@ jobs:
         # required
         app-id: ${{ secrets.OSAAWEBSITEBOT_APPID }}
         private-key: ${{ secrets.OSAAWEBSITEBOT_PRIVATEKEY }}
-        token: ${{ steps.app-token.outputs.token }}
     
     - uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.PAT }} # Fine-grained GitHub PAT that was saved as repository secret
+        github-token: ${{ steps.app-token.outputs.token }}
         script: |
           await github.rest.actions.createworkflowDispatch({
             owner: 'openspaceaarhus',
