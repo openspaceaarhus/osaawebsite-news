@@ -1,0 +1,39 @@
+name: 'Submodule Notify Parent'
+
+on:
+  push:
+    branches:
+      - main    
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  notify:
+    name: 'Submodule Notify Parent'
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - uses: actions/create-github-app-token@v1
+      id: app-token
+      with:
+        # required
+        app-id: ${{ secrets.OSAAWEBSITEBOT_APPID }}
+        private-key: ${{ secrets.OSAAWEBSITEBOT_PRIVATEKEY }}
+        token: ${{ steps.app-token.outputs.token }}
+    
+    - uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.PAT }} # Fine-grained GitHub PAT that was saved as repository secret
+        script: |
+          await github.rest.actions.createworkflowDispatch({
+            owner: 'openspaceaarhus',
+            repo: 'osaawebsite',
+            workflow_id: 'submodules.yml',
+            ref: 'master'
+          })           
