@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Ny hjemmeside"
+author: BlackThorneDK
+date: '2024-06-29T23:50:00+02:00'
 ---
 
 OSAA har endelig fået ny hjemmeside!
