@@ -2,7 +2,7 @@
 layout: post
 title: "Arbejdsdag for November + Jubilæumsdag"
 author: BlackThorneDK
-date: '2024-10-22T14:16:00+02:00'
+date: '2025-10-22T14:16:00+02:00'
 ---
 
 Arbejdsdagen for November flyttes til den 22 November 2025.
